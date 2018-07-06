@@ -11,7 +11,7 @@
 
 #else
 
-static void luaL_setmetatable(lua_State *L, const char *tname)
+void luaL_setmetatable(lua_State *L, const char *tname)
 {
 	luaL_getmetatable(L, tname);
 	lua_setmetatable(L, -2);
@@ -22,7 +22,7 @@ static int lua_absindex(lua_State *L, int idx)
 	return (idx > 0 || idx <= LUA_REGISTRYINDEX)? idx : lua_gettop(L) + idx + 1;
 }
 
-static void luaL_setfuncs(lua_State *L, const luaL_Reg *l, int nup)
+void luaL_setfuncs(lua_State *L, const luaL_Reg *l, int nup)
 {
 	int i, t = lua_absindex(L, -1 - nup);
 
